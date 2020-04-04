@@ -1,0 +1,9 @@
+{
+  "body": "{\"content\":\"updating this post, made a loaf with rosemary.\",\"attachment\":\"hello.jpg\"}",
+  "pathParameters": {
+    "id": "13bf58e0-7542-11ea-bc1d-99d08bbb425d"
+  },
+  "requestContext": {
+    "identity": "USER0"
+  }
+}
