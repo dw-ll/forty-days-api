@@ -1,7 +1,7 @@
 # NOTE: update this with your service name
 service: serverless-notes-api
 
-# Create an optimized package for our functions 
+# Create an optimized package for our functions
 package:
   individually: true
 
@@ -15,12 +15,10 @@ provider:
   runtime: nodejs10.x
   stage: dev
   region: us-east-2
-  
 
-  # Provide enviorment variables to our handlers 
+  # Provide enviorment variables to our handlers
   environment:
     tableName: notes
-
 
   # Configure the permissions for an IAM roles, for the Lambda function
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -29,7 +27,7 @@ provider:
       Action:
         - dynamodb:DescribeTable
         - dynamodb:Query
-        - dynamodb:Scan 
+        - dynamodb:Scan
         - dynamodb:GetItem
 
         - dynamodb:PutItem
@@ -37,20 +35,27 @@ provider:
         - dynamodb:DeleteItem
       Resource: "arn:aws-dynamodb:us-east-2:*:*"
 
-
 # Define HTTP API endpoints than invoke main functions
 functions:
   # Create Note Endpoint
   # Path: url is /notes
   # Method: Post request
   # Cors: Enable CORS for browser cross domain api call
-  # Authorizer: Authenticate using the aws iam role 
+  # Authorizer: Authenticate using the aws iam role
   create:
     handler: create.main
-    events: 
+    events:
       - http:
-          path:notes
-          method:post
-          cors:true
-          authorizer:aws_iam
+          path: notes
+          method: post
+          cors: true
+          authorizer: aws_iam
 
+  get:
+    handler: get.main
+    events:
+      - http:
+          path: notes/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam

@@ -1,5 +1,5 @@
 {
-  "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}",
+  "body": "{\"content\":\"this is my first quarantine journal post, i am very lonely. i'm going to make more bread.\",\"attachment\":\"hello.jpg\"}",
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "USER0"
