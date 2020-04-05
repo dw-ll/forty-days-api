@@ -50,6 +50,14 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  delete:
+    handler: delete.main
+    events:
+      - http:
+          path: notes/{id}
+          method: post
+          cors: true
+          authorizer: aws_iam
 
   get:
     handler: get.main
