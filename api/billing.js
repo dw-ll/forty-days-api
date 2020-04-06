@@ -1,6 +1,6 @@
 import stripePackage from 'stripe';
-import { calculateCost } from './libs/billing-lib.js';
-import { success, failure } from './libs/response-lib.js';
+import { calculateCost } from '../libs/billing-lib.js';
+import { success, failure } from '../libs/response-lib.js';
 
 export async function main(event, context) {
     const { storage, source } = JSON.parse(event.body);
