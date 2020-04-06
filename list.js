@@ -19,7 +19,6 @@ export async function main(event, context) {
     try {
         const result = await dynamoDbLib.call('query', params);
         // Query accesses items from a table by primary key or secondary index.
-        console.log(result);
         return success(result.Items);
     } catch (err) {
         return failure({ status: false });

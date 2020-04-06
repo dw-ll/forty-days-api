@@ -94,3 +94,8 @@ functions:
           method: put
           cors: true
           authorizer: aws_iam
+
+# Created a resource using CloudFormation template
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
