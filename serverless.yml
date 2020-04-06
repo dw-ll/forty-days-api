@@ -19,6 +19,7 @@ provider:
   # Provide enviorment variables to our handlers
   environment:
     tableName: notes
+    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
   # Configure the permissions for an IAM roles, for the Lambda function
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -42,6 +43,15 @@ functions:
   # Method: Post request
   # Cors: Enable CORS for browser cross domain api call
   # Authorizer: Authenticate using the aws iam role
+  billing:
+    handler: billing.main
+    events:
+      - http:
+          path: billing
+          method: post
+          cors: true
+          authorizer: aws_iam
+
   create:
     handler: create.main
     events:
