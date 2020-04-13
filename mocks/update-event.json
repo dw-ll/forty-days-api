@@ -1,7 +1,7 @@
 {
-  "body": "{\"content\":\"updating this post, made a loaf with rosemary.\",\"attachment\":\"hello.jpg\"}",
+  "body": "{\"title\":\"this is a new test.\",\"content\":\"still read me if i weren't required kdfsgmkdfmg\",\"attachment\":null}",
   "pathParameters": {
-    "id": "13bf58e0-7542-11ea-bc1d-99d08bbb425d"
+    "id": "29ea39f0-7c77-11ea-abdc-2bd8b436bd04"
   },
   "requestContext": {
     "identity": "USER0"

@@ -34,7 +34,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws-dynamodb:us-east-2:*:*"
+      Resource: "arn:aws:dynamodb:us-east-2:*:*"
 
 # Define HTTP API endpoints than invoke main functions
 functions:
@@ -43,8 +43,17 @@ functions:
   # Method: Post request
   # Cors: Enable CORS for browser cross domain api call
   # Authorizer: Authenticate using the aws iam role
+  update:
+    handler: api/update.main
+    events:
+      - http:
+          path: notes/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+
   billing:
-    handler: billing.main
+    handler: api/billing.main
     events:
       - http:
           path: billing
@@ -53,7 +62,7 @@ functions:
           authorizer: aws_iam
 
   create:
-    handler: create.main
+    handler: api/create.main
     events:
       - http:
           path: notes
@@ -61,7 +70,7 @@ functions:
           cors: true
           authorizer: aws_iam
   delete:
-    handler: delete.main
+    handler: api/delete.main
     events:
       - http:
           path: notes/{id}
@@ -70,7 +79,7 @@ functions:
           authorizer: aws_iam
 
   get:
-    handler: get.main
+    handler: api/get.main
     events:
       - http:
           path: notes/{id}
@@ -79,23 +88,14 @@ functions:
           authorizer: aws_iam
 
   list:
-    handler: list.main
+    handler: api/list.main
     events:
       - http:
           path: notes
           method: get
           cors: true
           authorizer: aws_iam
-  update:
-    handler: update.main
-    events:
-      - http:
-          path: notes/{id}
-          method: put
-          cors: true
-          authorizer: aws_iam
-
 # Created a resource using CloudFormation template
 resources:
   # API Gateway Errors
-  - ${file(resources/api-gateway-errors.yml)}
+  - ${file(./resources/api-gateway-errors.yml)}
