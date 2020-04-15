@@ -86,6 +86,14 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  fetch:
+    handler: api/fetch.main
+    events:
+      - http:
+          path: notes/all
+          method: get
+          cors: true
+          authorizer: aws_iam
 
   list:
     handler: api/list.main

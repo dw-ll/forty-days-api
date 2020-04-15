@@ -7,17 +7,13 @@ export async function main(event, context) {
     // 'Key' defines the partition key and sort key of item to be fetched
     // 'userId': Identity pool identity id of the authenticated user
     // 'noteId': Path parameter
-    Key: {
-      userId: event.requestContext.identity.cognitoIdentityId,
-      noteId: event.pathParameters.id,
-    },
   };
 
   try {
-    const result = await dynamoDbLib.call("get", params);
-    console.log(result);
-    if (result.Item) {
-      return success(result.Item);
+    const result = await dynamoDbLib.call("scan", params);
+    console.log(result.Items);
+    if (result.Items) {
+      return success(result.Items);
     } else {
       return failure({ status: false, error: "Item not found." });
     }
