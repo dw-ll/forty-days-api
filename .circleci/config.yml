@@ -48,7 +48,4 @@ workflows:
           service_path: api/
           stage_name: ${CIRCLE_BRANCH}
           context: Development
-          filters:
-            branches:
-              ignore: master
 
