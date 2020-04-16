@@ -52,11 +52,3 @@ workflows:
             branches:
               ignore: master
 
-      - deploy-service:
-          name: Deploy API
-          service_path: api/
-          stage_name: prod
-          context: Production
-          filters:
-            branches:
-              only: master
