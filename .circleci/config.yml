@@ -53,7 +53,7 @@ workflows:
               ignore: master
 
       - deploy-service:
-          name: Deploy Users API
+          name: Deploy API
           service_path: api/
           stage_name: prod
           context: Production
