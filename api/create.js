@@ -2,6 +2,7 @@ import { v1 as uuidv1 } from "uuid";
 import { success, failure } from "../libs/response-lib";
 import * as dynamoLib from "../libs/dynamodb-lib.js";
 export async function main(event, context, callback) {
+  uuid.abc.gibberish;
   //  Request body is passed in as a JSON encoded string in 'event.body'
   const data = JSON.parse(event.body);
 
