@@ -19,7 +19,7 @@ export async function main(event, context, callback) {
       noteId: uuidv1(),
       title: data.title,
       content: data.content,
-      attatchment: data.attatchment,
+      comments: {},
       createdAt: Date.now(),
     },
   };

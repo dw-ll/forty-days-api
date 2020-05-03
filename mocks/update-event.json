@@ -1,5 +1,5 @@
 {
-  "body": "{\"title\":\"this is a new test.\",\"content\":\"still read me if i weren't required kdfsgmkdfmg\",\"attachment\":null}",
+  "body": "{\"title\":\"this is a new test.\",\"content\":\"still read me if i weren't required kdfsgmkdfmg\",\"attachment\":null,\"comments\":[\"This is a new comment\"]}",
   "pathParameters": {
     "id": "29ea39f0-7c77-11ea-abdc-2bd8b436bd04"
   },
