@@ -79,6 +79,14 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+  comment:
+    handler: api/comment.main
+    events:
+      - http:
+          path: notes/{id}/comment
+          method: put
+          cors: true
+          authorizer: aws_iam
   delete:
     handler: api/delete.main
     events:
