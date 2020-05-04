@@ -2,11 +2,13 @@ import * as dynamoDbLib from '../libs/dynamodb-lib.js';
 import { success, failure } from '../libs/response-lib.js';
 import { v1 as uuidv1 } from "uuid";
 export async function main(event, context) {
+    console.log(event.requestContext.identity);
+    console.log(event.pathParameters.id);
     const data = JSON.parse(event.body);
     const params = {
         TableName: process.env.tableName,
         Key: {
-            userId: event.requestContext.identity,
+            userId: event.requestContext.identity.cognitoIdentityId,
             noteId: event.pathParameters.id
         },
         UpdateExpression:
@@ -15,7 +17,11 @@ export async function main(event, context) {
             "#commentId": uuidv1()
         },
         ExpressionAttributeValues: {
-            ":content": data.content || null
+            ":content": {
+                "comment": data.content || null,
+                "createdAt": Date.now()
+
+            }
         },
     };
     try {
